@@ -2,6 +2,7 @@ package br.com.agendasystem.domain.entity.service;
 
 import br.com.agendasystem.domain.entity.Paciente;
 import br.com.agendasystem.domain.entity.repository.PacienteRepository;
+import br.com.agendasystem.exception.BusinessException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -16,15 +17,15 @@ public class PacienteService {
 
     private final PacienteRepository repository;
 
-    public Paciente criarPaciente(Paciente paciente) {
+    public Paciente salvar(Paciente paciente) {
         return repository.save(paciente);
     }
 
-    public List<Paciente> listarPacientes() {
+    public List<Paciente> listarTodos() {
         return repository.findAll();
     }
 
-    public Optional<Paciente> buscarPacientePorId(Long id) {
+    public Optional<Paciente> buscarPorId(Long id) {
         Optional<Paciente> paciente = repository.findById(id);
         if (repository.existsById(id)) {
             return paciente;
@@ -32,7 +33,7 @@ public class PacienteService {
 
         return Optional.empty();
     }
-    public void excluirPaciente(Long id) {
+    public void excluir(Long id) {
         repository.deleteById(id);
     }
 }
