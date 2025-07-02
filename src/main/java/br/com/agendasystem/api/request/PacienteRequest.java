@@ -1,5 +1,6 @@
 package br.com.agendasystem.api.request;
 
+import jakarta.validation.constraints.NotBlank;
 import lombok.*;
 
 @Getter
@@ -9,9 +10,11 @@ import lombok.*;
 
 public class PacienteRequest {
 
-
-    String nome;
-    String sobrenome;
-    String email;
-    String cpf;
+    @NotBlank(message = "Nome do paciente é obrigatório")
+    private String nome;
+    @NotBlank(message = "Sobrenome do paciente é obrigatório")
+    private String sobrenome;
+    private String email;
+    @NotBlank(message = "CPF do paciente é obrigatório")
+    private String cpf;
 }
