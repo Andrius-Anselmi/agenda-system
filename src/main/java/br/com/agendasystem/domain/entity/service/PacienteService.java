@@ -30,8 +30,17 @@ public class PacienteService {
         if (repository.existsById(id)) {
             return paciente;
         }
-
         return Optional.empty();
+    }
+
+    public Paciente atualizar(Long id,Paciente paciente) {
+        Optional<Paciente> pacienteAtualizado = buscarPorId(id);
+        if(pacienteAtualizado.isEmpty()) {
+            throw new BusinessException("Paciente não encontrado");
+        }
+        paciente.setId(id);
+        return salvar(paciente);
+
     }
     public void excluir(Long id) {
         repository.deleteById(id);
