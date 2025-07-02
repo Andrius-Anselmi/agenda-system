@@ -34,8 +34,6 @@ Próximos passos planejados:
 
     Integração entre microserviços via REST ou mensageria
 
-    Persistência de dados com banco de dados relacional ou NoSQL
-
     Testes unitários e de integração
 
     Documentação da API com Swagger
